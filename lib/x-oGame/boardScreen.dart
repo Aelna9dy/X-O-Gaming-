@@ -26,61 +26,84 @@ class _BoardScreenState extends State<BoardScreen> {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    CustomText(text: "person: 1(x)"),
-                    CustomText(text: "Score: $player1Score"),
-                  ],
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.blue,
+              ),
+              child: TextButton(
+                onPressed: () {
+                  Restart();
+                },
+                child: const Text(
+                  "Restart",
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Column(
-                  children: [
-                    CustomText(text: "person: 2(O)"),
-                    CustomText(text: "Score: $player2Score"),
-                  ],
-                ),
-              ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                BoardButton(onPlayerClick, boardState[0], 0),
-                BoardButton(onPlayerClick, boardState[1], 1),
-                BoardButton(onPlayerClick, boardState[2], 2),
-              ],
+            const SizedBox(
+              height: 15,
             ),
-          ),
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                BoardButton(onPlayerClick, boardState[3], 3),
-                BoardButton(onPlayerClick, boardState[4], 4),
-                BoardButton(onPlayerClick, boardState[5], 5),
-              ],
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      CustomText(text: "person: 1(x)"),
+                      CustomText(text: "Score: $player1Score"),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Column(
+                    children: [
+                      CustomText(text: "person: 2(O)"),
+                      CustomText(text: "Score: $player2Score"),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                BoardButton(onPlayerClick, boardState[6], 6),
-                BoardButton(onPlayerClick, boardState[7], 7),
-                BoardButton(onPlayerClick, boardState[8], 8),
-              ],
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  BoardButton(onPlayerClick, boardState[0], 0),
+                  BoardButton(onPlayerClick, boardState[1], 1),
+                  BoardButton(onPlayerClick, boardState[2], 2),
+                ],
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  BoardButton(onPlayerClick, boardState[3], 3),
+                  BoardButton(onPlayerClick, boardState[4], 4),
+                  BoardButton(onPlayerClick, boardState[5], 5),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  BoardButton(onPlayerClick, boardState[6], 6),
+                  BoardButton(onPlayerClick, boardState[7], 7),
+                  BoardButton(onPlayerClick, boardState[8], 8),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -155,5 +178,10 @@ class _BoardScreenState extends State<BoardScreen> {
   void resetBoard() {
     boardState = ["", "", "", "", "", "", "", "", ""];
     counter = 0;
+  }
+
+  void Restart() {
+    player1Score = 0;
+    player2Score = 0;
   }
 }
